@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fuente Inter desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('/images/fondo.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Botones*/
+.btn-cta {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #00d9ff, #9b4dff, #ff2ef9);
+  background-size: 200% auto;
+  color: #fff;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 12px rgba(155,77,255,0.6);
+}
+.btn-cta:hover {
+  background-position: 100% 0;
+  transform: scale(1.05);
+  box-shadow: 0 0 22px rgba(155,77,255,0.8);
+}
+
+
+/* Porque necesitas una web*/
+
+.needs-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.needs-list li:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(4px);
+}
+
+
+/* Menú con más brillo */
+@keyframes menuGlowStrong {
+  0%, 100% { text-shadow: 0 0 6px rgba(255,255,255,0.6); }
+  50% { text-shadow: 0 0 14px rgba(255,255,255,0.9); }
+}
+
+.animate-menuGlowStrong {
+  animation: menuGlowStrong 2s ease-in-out infinite;
+}
+
+/* Texto pequeño con brillo suave */
+@keyframes textSubtleGlow {
+  0%, 100% { text-shadow: 0 0 6px rgba(255,255,255,0.2); }
+  50% { text-shadow: 0 0 12px rgba(255,255,255,0.4); }
+}
+
+.animate-textSubtleGlow {
+  animation: textSubtleGlow 3s ease-in-out infinite;
+}
+
+/* Gradiente animado para Ruben Arias */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradientMove {
+  background-size: 200% 200%;
+  animation: gradientMove 6s ease-in-out infinite;
+}
+
+.animate-textGlow {
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+.animate-menuGlow {
+  animation: menuGlow 2.5s ease-in-out infinite;
+  transition: color 0.3s;
+}
+
+/* Efecto brillo para textos */
+@keyframes shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Brillo en el título */
+.text-shine {
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Animación de bordes */
+.border-animated {
+  position: relative;
+}
+
+.border-animated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: inherit;
+  background-size: 200% 200%;
+  filter: blur(6px);
+  z-index: -1;
+  animation: borderMove 6s linear infinite;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 8px #fff; }
+  50% { text-shadow: 0 0 16px #fff; }
+  100% { text-shadow: 0 0 8px #fff; }
+}
+
+.animate-textGlow {
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+
+/* Portafolio */
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-card img {
+  transition: transform 0.5s ease;
+}
+.portfolio-card:hover img {
+  transform: scale(1.1);
+}
+.portfolio-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.portfolio-card:hover::after {
+  opacity: 1;
+}
+
+/* Formulario */
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(0,217,255,0.7);
+}
+
