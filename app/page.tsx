@@ -281,7 +281,7 @@ export default function Home() {
       variants={fadeInUp}
       className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#9b4dff]/40 hover:border-[#9b4dff] hover:shadow-[0_0_25px_#9b4dff] transition-all portfolio-card"
     >
-      <img src="./images/proyecto2.png" alt="Proyecto 2" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
+      <img src="./images/proyecto2.jpg" alt="Proyecto 2" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
       <h3 className="text-2xl font-semibold text-[#9b4dff] mb-6">Proyecto 2</h3>
       <p className="text-gray-300 text-base mb-3">Un escenario digital para que cada obra llegue a más público y viva más allá del teatro.</p>
     </motion.div>
@@ -390,6 +390,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
