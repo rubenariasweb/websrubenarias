@@ -25,7 +25,7 @@ export default function Home() {
             {/* Logo */}
             <a href="/" className="flex items-center">
               <img
-                src="/images/logotipo.png"
+                src="/images/logo.png"
                 alt="Logo de Ruben Arias"
                 className="h-8 sm:h-10 md:h-12 w-auto hover:scale-105 transition-transform"
               />
@@ -463,6 +463,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
