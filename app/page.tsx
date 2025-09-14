@@ -271,7 +271,7 @@ export default function Home() {
       variants={fadeInUp}
       className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#00d9ff]/40 hover:border-[#00d9ff] hover:shadow-[0_0_25px_#00d9ff] transition-all portfolio-card"
     >
-      <img src="/images/proyecto1.png" alt="Proyecto 1" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
+      <img src="/images/proyecto1.PNG" alt="Proyecto 1" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
       <h3 className="text-2xl font-semibold text-[#00d9ff] mb-6">Proyecto 1</h3>
       <p className="text-gray-300 text-base mb-3">Da forma a tus ideas en 3D: de un diseño digital a una realidad tangible.</p>
     </motion.div>
@@ -281,7 +281,7 @@ export default function Home() {
       variants={fadeInUp}
       className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#9b4dff]/40 hover:border-[#9b4dff] hover:shadow-[0_0_25px_#9b4dff] transition-all portfolio-card"
     >
-      <img src="/images/proyecto2.png" alt="Proyecto 2" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
+      <img src="/images/proyecto2.PNG" alt="Proyecto 2" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
       <h3 className="text-2xl font-semibold text-[#9b4dff] mb-6">Proyecto 2</h3>
       <p className="text-gray-300 text-base mb-3">Un escenario digital para que cada obra llegue a más público y viva más allá del teatro.</p>
     </motion.div>
@@ -291,7 +291,7 @@ export default function Home() {
       variants={fadeInUp}
       className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#ff2ef9]/40 hover:border-[#ff2ef9] hover:shadow-[0_0_25px_#ff2ef9] transition-all portfolio-card"
     >
-      <img src="/images/proyecto3.png" alt="Proyecto 3" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
+      <img src="./images/proyecto3.PNG" alt="Proyecto 3" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
       <h3 className="text-2xl font-semibold text-[#ff2ef9] mb-6">Proyecto 3</h3>
       <p className="text-gray-300 text-base mb-3">Un escaparate online que transmite la delicadeza y el arte detrás de cada creación.</p>
     </motion.div>
@@ -390,3 +390,4 @@ export default function Home() {
     </main>
   );
 }
+
