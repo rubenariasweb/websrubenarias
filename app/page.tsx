@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -8,26 +10,97 @@ const fadeInUp = {
 };
 
 export default function Home() {
-  return (
-   <main className="relative min-h-screen text-white font-inter overflow-hidden">
-  <div className="min-h-screen bg-[url('/images/portada-ia.png')] bg-cover bg-center bg-fixed">
-    {/* BLOQUE 1: Hero + Sobre mí con imagen de fondo */}
-    <div className="relative">
-      {/* Overlay oscuro */}
-      <div className="absolute inset-0 bg-black/80 -z-10" />
+  const [isOpen, setIsOpen] = useState(false);
 
-      {/* Header */}
-      <header className="flex justify-between items-center px-8 py-6 bg-black/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-        <span className="text-xl md:text-2xl font-bold text-white hover:text-[#00b4d8] transition">
-          Ruben Arias
-        </span>
-        <nav className="flex gap-8 md:gap-12">
-          <a href="#about" className="text-lg md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">Sobre mí</a>
-          <a href="#services" className="text-lg md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">Servicios</a>
-          <a href="#portfolio" className="text-lg md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">Portafolio</a>
-          <a href="#contact" className="text-lg md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">Contacto</a>
-        </nav>
-      </header>
+  return (
+    <main className="relative min-h-screen text-white font-inter overflow-hidden">
+      <div className="min-h-screen bg-[url('/images/portada-ia.png')] bg-cover bg-center bg-fixed">
+        {/* BLOQUE 1: Hero + Sobre mí con imagen de fondo */}
+        <div className="relative">
+          {/* Overlay oscuro */}
+          <div className="absolute inset-0 bg-black/80 -z-10" />
+
+          {/* Header */}
+          <header className="flex justify-between items-center px-6 md:px-8 py-4 md:py-6 bg-black/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+            {/* Logo */}
+            <a href="/" className="flex items-center">
+              <img
+                src="/images/logotipo.png"
+                alt="Logo de Ruben Arias"
+                className="h-8 sm:h-10 md:h-12 w-auto hover:scale-105 transition-transform"
+              />
+            </a>
+
+            {/* Menú Desktop */}
+            <nav className="hidden md:flex gap-8 md:gap-12">
+              <a
+                href="#about"
+                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Sobre mí
+              </a>
+              <a
+                href="#services"
+                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Servicios
+              </a>
+              <a
+                href="#portfolio"
+                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Portafolio
+              </a>
+              <a
+                href="#contact"
+                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Contacto
+              </a>
+            </nav>
+
+            {/* Botón hamburguesa en móvil */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-white hover:text-[#00b4d8] transition"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </header>
+
+          {/* Menú desplegable en móvil */}
+          {isOpen && (
+            <div className="md:hidden bg-black/90 backdrop-blur-md border-b border-gray-700 flex flex-col items-center gap-6 py-6">
+              <a
+                href="#about"
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Sobre mí
+              </a>
+              <a
+                href="#services"
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Servicios
+              </a>
+              <a
+                href="#portfolio"
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Portafolio
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+              >
+                Contacto
+              </a>
+            </div>
+          )}
 
   {/* Capa oscura fonfo */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
@@ -390,6 +463,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
