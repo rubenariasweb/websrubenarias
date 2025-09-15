@@ -68,24 +68,32 @@ export default function Home() {
             </button>
           </header>
 
-          {/* Menú desplegable en móvil */}
+        {/* Menú desplegable en móvil */}
 {isOpen && (
   <div className="md:hidden bg-black/90 backdrop-blur-md border-b border-gray-700 flex flex-col items-center gap-6 py-6">
     {[
-      { href: "#about", label: "Sobre mí" },
-      { href: "#services", label: "Servicios" },
-      { href: "#portfolio", label: "Portafolio" },
-      { href: "#contact", label: "Contacto" },
+      { id: "about", label: "Sobre mí" },
+      { id: "services", label: "Servicios" },
+      { id: "portfolio", label: "Portafolio" },
+      { id: "contact", label: "Contacto" },
     ].map((item) => (
       <button
-        key={item.href}
+        key={item.id}
         onClick={() => {
           setIsOpen(false);
-          // Hacemos scroll de forma suave después de cerrar el menú
           setTimeout(() => {
-            const target = document.querySelector(item.href);
-            target?.scrollIntoView({ behavior: "smooth" });
-          }, 100); // damos tiempo a cerrar el menú
+            const el = document.getElementById(item.id);
+            if (el) {
+              const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+              const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+              const offsetPosition = elementPosition - headerHeight;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          }, 200);
         }}
         className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
       >
@@ -94,6 +102,7 @@ export default function Home() {
     ))}
   </div>
 )}
+
 
   {/* Capa oscura fonfo */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
@@ -456,6 +465,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
