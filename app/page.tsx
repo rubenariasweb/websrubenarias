@@ -69,38 +69,31 @@ export default function Home() {
           </header>
 
           {/* Menú desplegable en móvil */}
-          {isOpen && (
-            <div className="md:hidden bg-black/90 backdrop-blur-md border-b border-gray-700 flex flex-col items-center gap-6 py-6">
-              <a
-                href="#about"
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
-                Sobre mí
-              </a>
-              <a
-                href="#services"
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
-                Servicios
-              </a>
-              <a
-                href="#portfolio"
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
-                Portafolio
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
-                Contacto
-              </a>
-            </div>
-          )}
+{isOpen && (
+  <div className="md:hidden bg-black/90 backdrop-blur-md border-b border-gray-700 flex flex-col items-center gap-6 py-6">
+    {[
+      { href: "#about", label: "Sobre mí" },
+      { href: "#services", label: "Servicios" },
+      { href: "#portfolio", label: "Portafolio" },
+      { href: "#contact", label: "Contacto" },
+    ].map((item) => (
+      <button
+        key={item.href}
+        onClick={() => {
+          setIsOpen(false);
+          // Hacemos scroll de forma suave después de cerrar el menú
+          setTimeout(() => {
+            const target = document.querySelector(item.href);
+            target?.scrollIntoView({ behavior: "smooth" });
+          }, 100); // damos tiempo a cerrar el menú
+        }}
+        className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+      >
+        {item.label}
+      </button>
+    ))}
+  </div>
+)}
 
   {/* Capa oscura fonfo */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
@@ -463,6 +456,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
