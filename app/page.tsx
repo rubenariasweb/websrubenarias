@@ -12,17 +12,31 @@ const fadeInUp = {
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Función reutilizable para hacer scroll con offset por header sticky
+  const handleScrollTo = (id: string) => {
+    setIsOpen(false);
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) {
+        console.warn(`No se encontró la sección #${id}`);
+        return;
+      }
+      const header = document.querySelector("header");
+      const headerHeight = header ? (header as HTMLElement).offsetHeight : 0;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerHeight - 8; // pequeño margen
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }, 180); // pequeño delay para que el overlay desaparezca
+  };
+
   return (
-    <main className="relative min-h-screen text-white font-inter overflow-hidden">
+    // Quitado overflow-hidden para permitir scroll vertical
+    <main className="relative min-h-screen text-white font-inter overflow-x-hidden">
       <div className="min-h-screen bg-[url('/images/portada-ia.png')] bg-cover bg-center bg-fixed">
-        {/* BLOQUE 1: Hero + Sobre mí con imagen de fondo */}
         <div className="relative">
-          {/* Overlay oscuro */}
           <div className="absolute inset-0 bg-black/80 -z-10" />
 
-          {/* Header */}
           <header className="flex justify-between items-center px-6 md:px-8 py-4 md:py-6 bg-black/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-            {/* Logo */}
             <a href="/" className="flex items-center">
               <img
                 src="/images/logo.png"
@@ -31,77 +45,50 @@ export default function Home() {
               />
             </a>
 
-            {/* Menú Desktop */}
             <nav className="hidden md:flex gap-8 md:gap-12">
-              <a
-                href="#about"
-                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
+              <a href="#about" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
                 Sobre mí
               </a>
-              <a
-                href="#services"
-                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
+              <a href="#services" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
                 Servicios
               </a>
-              <a
-                href="#portfolio"
-                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
+              <a href="#portfolio" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
                 Portafolio
               </a>
-              <a
-                href="#contact"
-                className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
-              >
+              <a href="#contact" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
                 Contacto
               </a>
             </nav>
 
-            {/* Botón hamburguesa en móvil */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white hover:text-[#00b4d8] transition"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white hover:text-[#00b4d8] transition">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </header>
 
-        {/* Menú desplegable en móvil */}
-{isOpen && (
-  <div className="md:hidden bg-black/90 backdrop-blur-md border-b border-gray-700 flex flex-col items-center gap-6 py-6">
-    {[
-      { id: "about", label: "Sobre mí" },
-      { id: "services", label: "Servicios" },
-      { id: "portfolio", label: "Portafolio" },
-      { id: "contact", label: "Contacto" },
-    ].map((item) => (
-      <button
-        key={item.id}
-        onClick={() => {
-          setIsOpen(false);
-          setTimeout(() => {
-            const el = document.getElementById(item.id);
-            if (el) {
-              const headerHeight = document.querySelector("header")?.offsetHeight || 0;
-              const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-              const offsetPosition = elementPosition - headerHeight;
-
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth",
-              });
-            }
-          }, 200);
-        }}
-        className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
-      >
-        {item.label}
-      </button>
-    ))}
-  </div>
-)}
+          {/* Overlay menú móvil (fixed para evitar que bloquee el scroll cuando se cierre) */}
+          {isOpen && (
+            <div className="fixed inset-0 z-50 md:hidden">
+              {/* Fondo semitransparente */}
+              <div className="absolute inset-0 bg-black/85 backdrop-blur-md" onClick={() => setIsOpen(false)} />
+              {/* Contenido del menú */}
+              <div className="relative flex flex-col items-center gap-6 py-8">
+                {[
+                  { id: "about", label: "Sobre mí" },
+                  { id: "services", label: "Servicios" },
+                  { id: "portfolio", label: "Portafolio" },
+                  { id: "contact", label: "Contacto" },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleScrollTo(item.id)}
+                    className="z-10 text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
 
   {/* Capa oscura fonfo */}
@@ -465,6 +452,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
