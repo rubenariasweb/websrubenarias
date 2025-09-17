@@ -117,13 +117,14 @@ export default function Home() {
         >
           Transformo ideas en <span className="text-[#00b4d8] font-semibold">páginas web profesionales</span> que generan confianza, atraen clientes y hacen crecer tu negocio.
         </motion.p>
-
+  {/* Boton quiero mi web 
         <a
   href="#contact"
   className="relative z-10 mt-8 inline-block px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg transition-all"
 >
   Quiero mi web →
 </a>
+*/}
       </section>
  
 
@@ -185,7 +186,7 @@ export default function Home() {
     ¿Por qué tu negocio necesita una web?
   </h3>
   <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
-    Hoy en día, <span className="text-[#00d9ff] font-semibold">8 de cada 10 clientes</span>
+    Hoy en día, <span className="text-[#00d9ff] font-semibold">8 de cada 10 clientes </span>
     buscan en Internet antes de comprar.
     Si tu negocio no está online, estás <span className="text-[#ff2ef9] font-semibold">perdiendo ventas</span>.
     Una web profesional te da:
@@ -452,6 +453,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
