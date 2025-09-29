@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Menu, X } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -11,6 +13,71 @@ const fadeInUp = {
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // 👇 Inicializamos el carrusel con autoplay
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      skipSnaps: false,
+    },
+    [
+      Autoplay({
+        delay: 3000, // cada 3s pasa al siguiente
+        stopOnInteraction: true,
+      }),
+    ]
+  );
+
+  // Controles manuales
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+
+  // Array de proyectos definido FUERA del JSX para evitar recreaciones
+  const proyectos = [
+    {
+      id: 1,
+      title: "Experiencias de lujo",
+      description:
+        "Descubre experiencias unicas a traves de este sitio web",
+      image: "/images/proyecto1.png",
+      url: "https://lux-experience.vercel.app/",
+    },
+    {
+      id: 2,
+      title: "Escena Viva - Productora de Teatro",
+      description:
+        "Sitio web para una productora teatral, mostrando su cartelera de obras, fechas y venta de entradas.",
+      image: "/images/proyecto2.png",
+      url: "https://almavidalproducciones.com",
+    },
+    {
+      id: 3,
+      title: "Reborn Dreams",
+      description:
+        "Escaparate online de muñecos reborn, con galería de modelos y detalles de cada creación artesanal.",
+      image: "/images/proyecto3.png",
+      url: "https://rincondelaratita.com",
+    },
+    {
+       id: 4,
+      title: "CV Online Interactivo",
+      description:
+        "Currículum digital interactivo con experiencia laboral, proyectos destacados y contacto directo.",
+      image: "/images/proyecto5.png",
+      url: "https://arias-security.netlify.app/",
+    },
+    {
+        id: 5,
+      title: "CoachFit - Entrenamiento & Nutrición",
+      description:
+        "Plataforma para un coach personal, con planes de entrenamiento, asesoría nutricional y reservas online.",
+      image: "/images/proyecto4.png",
+      url: "https://entrena-con-sentido.vercel.app/",
+    },
+  ];
+
 
   // Función reutilizable para hacer scroll con offset por header sticky
   const handleScrollTo = (id: string) => {
@@ -24,9 +91,9 @@ export default function Home() {
       const header = document.querySelector("header");
       const headerHeight = header ? (header as HTMLElement).offsetHeight : 0;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerHeight - 8; // pequeño margen
+      const offsetPosition = elementPosition - headerHeight - 8;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }, 180); // pequeño delay para que el overlay desaparezca
+    }, 180);
   };
 
   return (
@@ -91,6 +158,9 @@ export default function Home() {
           )}
 
 
+
+
+
   {/* Capa oscura fonfo */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
 
@@ -117,7 +187,8 @@ export default function Home() {
         >
           Transformo ideas en <span className="text-[#00b4d8] font-semibold">páginas web profesionales</span> que generan confianza, atraen clientes y hacen crecer tu negocio.
         </motion.p>
-  {/* Boton quiero mi web 
+
+ {/* Boton de Hero a Contacto
         <a
   href="#contact"
   className="relative z-10 mt-8 inline-block px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg transition-all"
@@ -146,7 +217,7 @@ export default function Home() {
           <p className="relative z-10 text-gray-300 text-lg leading-relaxed mb-4">
             Actualmente trabajo como <span className="text-white font-semibold">desarrollador en BBVA</span>, donde participo en la creación de soluciones digitales <span className="text-[#00b4d8] font-semibold">innovadoras</span> y seguras.
             <br /><br />
-            Cuento con una sólida base de estudios en programación, varios proyectos desarrollados y una gran pasión por seguir aprendiendo y creciendo dentro del mundo tecnológico.
+            Cuento con una sólida base de estudios en programación, varios proyectos desarrollados y una gran pasión por seguir creciendo dentro del mundo tecnológico.
           </p>
           <a
             href="#services"
@@ -162,7 +233,7 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.2 }} 
           className="bg-[#222]/70 p-6 rounded-xl shadow-md backdrop-blur-sm"
         >
           <img src="/images/impresion3d.png" alt="Ejemplo" className="rounded-lg" />
@@ -185,28 +256,58 @@ export default function Home() {
   <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-[#00d9ff] via-[#9b4dff] to-[#ff2ef9] bg-clip-text text-transparent animate-textGlow">
     ¿Por qué tu negocio necesita una web?
   </h3>
+
   <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
-    Hoy en día, <span className="text-[#00d9ff] font-semibold">8 de cada 10 clientes </span>
-    buscan en Internet antes de comprar.
+    Hoy en día, <span className="text-[#00d9ff] font-semibold">8 de cada 10 clientes</span> buscan en Internet antes de comprar.
     Si tu negocio no está online, estás <span className="text-[#ff2ef9] font-semibold">perdiendo ventas</span>.
     Una web profesional te da:
   </p>
-  <ul className="mt-6 space-y-4 text-gray-300 text-lg">
-    <li>📈 <span className="text-white font-semibold">Más clientes</span> gracias a la visibilidad en Google.</li>
-    <li>🤝 <span className="text-white font-semibold">Credibilidad</span> y confianza en tu marca.</li>
-    <li>🕑 <span className="text-white font-semibold">Disponibilidad 24/7</span>, tu negocio nunca duerme.</li>
-    <li>💡 <span className="text-white font-semibold">Diferenciación</span> frente a tu competencia.</li>
-  </ul>
 
-  {/* Botón hacia contacto */}
-  <a
+  <motion.ul
+    className="mt-8 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={{
+      hidden: {},
+      visible: {
+        transition: { staggerChildren: 0.15 },
+      },
+    }}
+  >
+    {[
+      { icon: "📈", title: "Más clientes", desc: "gracias a la visibilidad en Google." },
+      { icon: "🤝", title: "Credibilidad", desc: "y confianza en tu marca." },
+      { icon: "🕑", title: "Disponibilidad 24/7", desc: "tu negocio nunca duerme." },
+      { icon: "💡", title: "Diferenciación", desc: "frente a tu competencia." },
+    ].map((item, idx) => (
+      <motion.li
+        key={idx}
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        className="bg-gradient-to-b from-[#1a1a1a]/70 to-[#0f0f0f]/70 p-4 rounded-xl border border-[#00d9ff]/30 hover:border-[#00d9ff] shadow-md transition-all"
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-2xl">{item.icon}</span>
+          <p className="text-gray-300">
+            <span className="text-white font-semibold">{item.title}</span> {item.desc}
+          </p>
+        </div>
+      </motion.li>
+    ))}
+  </motion.ul>
+
+  <motion.a
     href="#contact"
+    whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px #00d9ff" }}
     className="inline-block mt-12 px-8 py-4 rounded-lg font-semibold text-lg bg-[#00b4d8] hover:bg-[#0096c7] text-white shadow-md transition-all"
   >
-    Haz crecer tu negocio hoy →
-  </a>
-
+    🚀 Haz crecer tu negocio hoy
+  </motion.a>
 </motion.div>
+
 
 
     {/* Título Servicios */}
@@ -303,62 +404,67 @@ export default function Home() {
   <section id="portfolio" className="relative px-8 py-28 max-w-6xl mx-auto z-10">
   <motion.h2
     className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#00d9ff] via-[#9b4dff] to-[#ff2ef9] bg-clip-text text-transparent animate-textGlow"
-    variants={fadeInUp}
-    initial="hidden"
-    whileInView="visible"
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
   >
     Portafolio
   </motion.h2>
 
   <motion.p
-    className="text-center text-gray-300 text-xl max-w-3xl mx-auto mb-16"
-    variants={fadeInUp}
-    initial="hidden"
-    whileInView="visible"
+    className="text-center text-gray-300 text-xl max-w-3xl mx-auto mb-10"
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
   >
-    Algunos de mis proyectos recientes que muestran cómo transformo ideas en experiencias digitales.
+    Algunos de mis proyectos recientes que muestran cómo transformo ideas
+    en experiencias digitales.
   </motion.p>
 
-  {/* Grid de proyectos */}
-  <motion.div
-    className="grid md:grid-cols-3 gap-10"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.2 } } }}
-  >
-    {/* Proyecto 1 */}
-    <motion.div
-      variants={fadeInUp}
-      className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#00d9ff]/40 hover:border-[#00d9ff] hover:shadow-[0_0_25px_#00d9ff] transition-all portfolio-card"
-    >
-      <img src="/images/proyecto1.png" alt="Proyecto 1" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
-      <h3 className="text-2xl font-semibold text-[#00d9ff] mb-6">Proyecto 1</h3>
-      <p className="text-gray-300 text-base mb-3">Da forma a tus ideas en 3D: de un diseño digital a una realidad tangible.</p>
-    </motion.div>
+  {/* Carrusel */}
+  <div className="overflow-hidden" ref={emblaRef}>
+    <div className="flex">
+      {proyectos.map((proyecto) => (
+        <motion.a
+          key={proyecto.id}
+          href={proyecto.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.03 }}
+          className="flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] mx-3 bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#00d9ff]/40 hover:shadow-[0_0_25px_#00d9ff] transition-transform duration-300"
+        >
+          <img
+            src={proyecto.image}
+            alt={proyecto.title}
+            className="rounded-lg mb-4"
+            loading="lazy"
+          />
+          <h3 className="text-2xl font-semibold text-[#00d9ff] mb-4">
+            {proyecto.title}
+          </h3>
+          <p className="text-gray-300 text-base">{proyecto.description}</p>
+        </motion.a>
+      ))}
+    </div>
+  </div>
 
-    {/* Proyecto 2 */}
-    <motion.div
-      variants={fadeInUp}
-      className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#9b4dff]/40 hover:border-[#9b4dff] hover:shadow-[0_0_25px_#9b4dff] transition-all portfolio-card"
+  {/* Controles */}
+  <div className="flex justify-center gap-6 mt-6">
+    <button
+      onClick={scrollPrev}
+      aria-label="Proyecto anterior"
+      className="p-3 rounded-full bg-[#1a1a1a] hover:bg-[#00d9ff]/30"
     >
-      <img src="./images/proyecto2.jpg" alt="Proyecto 2" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
-      <h3 className="text-2xl font-semibold text-[#9b4dff] mb-6">Proyecto 2</h3>
-      <p className="text-gray-300 text-base mb-3">Un escenario digital para que cada obra llegue a más público y viva más allá del teatro.</p>
-    </motion.div>
-
-    {/* Proyecto 3 */}
-    <motion.div
-      variants={fadeInUp}
-      className="group relative bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#ff2ef9]/40 hover:border-[#ff2ef9] hover:shadow-[0_0_25px_#ff2ef9] transition-all portfolio-card"
+      ←
+    </button>
+    <button
+      onClick={scrollNext}
+      aria-label="Proyecto siguiente"
+      className="p-3 rounded-full bg-[#1a1a1a] hover:bg-[#00d9ff]/30"
     >
-      <img src="./images/proyecto3.png" alt="Proyecto 3" className="rounded-lg mb-4 group-hover:scale-105 transition-transform" />
-      <h3 className="text-2xl font-semibold text-[#ff2ef9] mb-6">Proyecto 3</h3>
-      <p className="text-gray-300 text-base mb-3">Un escaparate online que transmite la delicadeza y el arte detrás de cada creación.</p>
-    </motion.div>
-  </motion.div>
+      →
+    </button>
+  </div>
 </section>
 
 
@@ -453,13 +559,3 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
