@@ -132,34 +132,33 @@ export default function Home() {
             </button>
           </header>
 
-          {/* Overlay menú móvil (fixed para evitar que bloquee el scroll cuando se cierre) */}
-          {isOpen && (
-            <div className="fixed inset-0 z-50 md:hidden">
-              {/* Fondo semitransparente */}
-              <div className="absolute inset-0 bg-black/85 backdrop-blur-md" onClick={() => setIsOpen(false)} />
-              {/* Contenido del menú */}
-              <div className="relative flex flex-col items-center gap-6 py-8">
-                {[
-                  { id: "about", label: "Sobre mí" },
-                  { id: "services", label: "Servicios" },
-                  { id: "portfolio", label: "Portafolio" },
-                  { id: "contact", label: "Contacto" },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => handleScrollTo(item.id)}
-                    className="z-10 text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-
-
-
+         {/* Overlay menú móvil (fixed para evitar que bloquee el scroll cuando se cierre) */}
+{isOpen && (
+  <div className="fixed inset-0 z-40 md:hidden">
+    {/* Fondo semitransparente */}
+    <div
+      className="absolute inset-0 bg-black/85 backdrop-blur-md z-10"
+      onClick={() => setIsOpen(false)}
+    />
+    {/* Contenido del menú */}
+    <div className="relative flex flex-col items-center gap-6 py-8 z-20">
+      {[
+        { id: "about", label: "Sobre mí" },
+        { id: "services", label: "Servicios" },
+        { id: "portfolio", label: "Portafolio" },
+        { id: "contact", label: "Contacto" },
+      ].map((item) => (
+        <button
+          key={item.id}
+          onClick={() => handleScrollTo(item.id)}
+          className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
 
   {/* Capa oscura fonfo */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
@@ -568,3 +567,4 @@ export default function Home() {
     </main>
   );
 }
+
