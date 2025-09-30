@@ -98,8 +98,8 @@ export default function Home() {
 
   return (
     // Quitado overflow-hidden para permitir scroll vertical
-    <main className="relative min-h-screen text-white font-inter overflow-x-hidden">
-      <div className="min-h-screen bg-[url('/images/portada-ia.png')] bg-cover bg-center bg-fixed">
+    <main className="relative min-h-screen text-white font-inter overflow-hidden">
+      <div className="bg-[url('/images/portada-ia.png')] bg-cover bg-center bg-fixed">
         <div className="relative">
           <div className="absolute inset-0 bg-black/80 -z-10" />
 
@@ -425,25 +425,34 @@ export default function Home() {
   <div className="overflow-hidden" ref={emblaRef}>
     <div className="flex">
       {proyectos.map((proyecto) => (
-        <motion.a
-          key={proyecto.id}
-          href={proyecto.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.03 }}
-          className="flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] mx-3 bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-4 rounded-2xl shadow-lg border border-[#00d9ff]/40 hover:shadow-[0_0_25px_#00d9ff] transition-transform duration-300"
-        >
-          <img
-            src={proyecto.image}
-            alt={proyecto.title}
-            className="rounded-lg mb-4"
-            loading="lazy"
-          />
-          <h3 className="text-2xl font-semibold text-[#00d9ff] mb-4">
-            {proyecto.title}
-          </h3>
-          <p className="text-gray-300 text-base">{proyecto.description}</p>
-        </motion.a>
+       <a
+  key={proyecto.id}
+  href={proyecto.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] mx-3"
+>
+  <motion.div
+    whileHover={{ scale: 1.03 }}
+    className="h-full bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 
+               p-4 rounded-2xl shadow-lg border border-[#00d9ff]/40 
+               hover:shadow-[0_0_25px_#00d9ff] transition-transform duration-300"
+  >
+    <img
+      src={proyecto.image}
+      alt={proyecto.title}
+      className="rounded-lg mb-4 w-full object-cover"
+      loading="lazy"
+      draggable={false}
+    />
+    <h3 className="text-2xl font-semibold text-[#00d9ff] mb-4">
+      {proyecto.title}
+    </h3>
+    <p className="text-gray-300 text-base">{proyecto.description}</p>
+  </motion.div>
+</a>
+
+
       ))}
     </div>
   </div>
