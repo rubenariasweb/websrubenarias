@@ -1,5 +1,6 @@
 import "./globals.css";
 import { ReactNode } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Mi Portafolio",

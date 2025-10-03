@@ -160,6 +160,11 @@ export default function Home() {
   </div>
 )}
 
+
+
+
+
+
   {/* Capa oscura fonfo */}
         <div className="absolute inset-0 bg-black/60 z-0"></div>
 
@@ -567,4 +572,3 @@ export default function Home() {
     </main>
   );
 }
-
