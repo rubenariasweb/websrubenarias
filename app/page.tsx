@@ -179,7 +179,7 @@ export default function Home() {
           variants={fadeInUp}
           className="relative z-10 text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#00b4d8] to-[#48cae4] bg-clip-text text-transparent"
         >
-           Impulsa tu negocio online
+           Tu éxito online comienza aquí
         </motion.h1>
 
         <motion.p
@@ -189,7 +189,7 @@ export default function Home() {
           transition={{ delay: 0.2 }}
           className="relative z-10 text-lg md:text-xl max-w-2xl text-gray-200"
         >
-          Transformo ideas en <span className="text-[#00b4d8] font-semibold">páginas web profesionales</span> que generan confianza, atraen clientes y hacen crecer tu negocio.
+          Tu web es la <span className="text-[#00b4d8] font-semibold">puerta a tu éxito online.</span> Diseñada para generar confianza, atraer clientes y transmitir seguridad.
         </motion.p>
 
  {/* Boton de Hero a Contacto
@@ -334,7 +334,7 @@ export default function Home() {
       className="text-center text-gray-300 text-lg max-w-3xl mx-auto mb-16"
     >
       Transformo ideas en soluciones digitales modernas, seguras y atractivas.
-      Estos son algunos de los servicios que ofrezco como desarrollador web:
+      Cada servicio está pensado para que tu negocio gane confianza, visibilidad y resultados reales.
     </motion.p>
 
     {/* Grid de servicios fila 1 */}
@@ -494,7 +494,8 @@ export default function Home() {
     Hablemos
   </h2>
   <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-    ¿Listo para dar el siguiente paso? Cuéntame tu proyecto y te responderé con una propuesta adaptada a ti.
+    Tener una web ya no es un lujo, es la clave para conseguir clientes y destacar.
+    Cuéntame tu proyecto y te responderé con una propuesta adaptada a ti.
   </p>
 
   {/* Formulario conectado a Formspree */}
