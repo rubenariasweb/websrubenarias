@@ -103,45 +103,62 @@ export default function Home() {
         <div className="relative">
           <div className="absolute inset-0 bg-black/80 -z-10" />
 
-          <header className="flex justify-between items-center px-6 md:px-8 py-4 md:py-6 bg-black/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-            <a href="/" className="flex items-center">
-              <img
-                src="/images/logo.png"
-                alt="Logo de Ruben Arias"
-                className="h-8 sm:h-10 md:h-12 w-auto hover:scale-105 transition-transform"
-              />
-            </a>
+        <header className="flex justify-between items-center px-6 md:px-8 py-4 md:py-6 bg-black/50 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+  <a href="/" className="flex items-center">
+    <img
+      src="/images/logo.png"
+      alt="Logo de Ruben Arias"
+      className="h-16 sm:h-20 md:h-24 w-auto hover:scale-105 transition-transform"
+    />
+  </a>
 
-            <nav className="hidden md:flex gap-8 md:gap-12">
-              <a href="#about" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
-                Sobre mí
-              </a>
-              <a href="#services" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
-                Servicios
-              </a>
-              <a href="#portfolio" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
-                Portafolio
-              </a>
-              <a href="#contact" className="text-base md:text-xl font-medium text-gray-200 hover:text-[#00b4d8] transition">
-                Contacto
-              </a>
-            </nav>
+  <nav className="hidden md:flex gap-10 md:gap-14">
+    <a
+      href="#about"
+      className="text-lg md:text-2xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+    >
+      Sobre mí
+    </a>
+    <a
+      href="#services"
+      className="text-lg md:text-2xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+    >
+      Servicios
+    </a>
+    <a
+      href="#portfolio"
+      className="text-lg md:text-2xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+    >
+      Portafolio
+    </a>
+    <a
+      href="#contact"
+      className="text-lg md:text-2xl font-medium text-gray-200 hover:text-[#00b4d8] transition"
+    >
+      Contacto
+    </a>
+  </nav>
 
-            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white hover:text-[#00b4d8] transition">
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </header>
+  <button
+    onClick={() => setIsOpen(!isOpen)}
+    className="md:hidden text-white hover:text-[#00b4d8] transition"
+  >
+    {isOpen ? <X size={32} /> : <Menu size={32} />}
+  </button>
+</header>
 
-         {/* Overlay menú móvil (fixed para evitar que bloquee el scroll cuando se cierre) */}
+
+        {/* Overlay menú móvil */}
 {isOpen && (
-  <div className="fixed inset-0 z-40 md:hidden">
+  <div className="fixed inset-0 z-40 md:hidden flex flex-col">
     {/* Fondo semitransparente */}
     <div
       className="absolute inset-0 bg-black/85 backdrop-blur-md z-10"
       onClick={() => setIsOpen(false)}
     />
+
     {/* Contenido del menú */}
-    <div className="relative flex flex-col items-center gap-6 py-8 z-20">
+    <div className="relative z-20 flex flex-col items-center justify-center min-h-screen gap-10">
       {[
         { id: "about", label: "Sobre mí" },
         { id: "services", label: "Servicios" },
@@ -151,7 +168,7 @@ export default function Home() {
         <button
           key={item.id}
           onClick={() => handleScrollTo(item.id)}
-          className="text-lg font-medium text-gray-200 hover:text-[#00b4d8] transition"
+          className="text-2xl font-semibold text-gray-200 hover:text-[#00b4d8] transition"
         >
           {item.label}
         </button>
@@ -159,10 +176,6 @@ export default function Home() {
     </div>
   </div>
 )}
-
-
-
-
 
 
   {/* Capa oscura fonfo */}
