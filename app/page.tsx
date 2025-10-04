@@ -295,8 +295,8 @@ export default function Home() {
     {[
       { icon: "📈", title: "Más clientes", desc: "gracias a la visibilidad en Google." },
       { icon: "🤝", title: "Credibilidad", desc: "y confianza en tu marca." },
-      { icon: "🕑", title: "Disponibilidad 24/7", desc: "tu negocio nunca duerme." },
-      { icon: "💡", title: "Diferenciación", desc: "frente a tu competencia." },
+      { icon: "🕑", title: "Disponibilidad 24/7", desc: "tu negocio nunca deja de facturar." },
+      { icon: "💡", title: "Tu marca brillará", desc: "donde otros pasan desapercibidos." },
     ].map((item, idx) => (
       <motion.li
         key={idx}
@@ -373,7 +373,7 @@ export default function Home() {
       {/* Morado */}
       <motion.div variants={fadeInUp} className="bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-8 rounded-2xl shadow-lg text-center border border-[#9b4dff]/40 hover:border-[#9b4dff] hover:shadow-[0_0_25px_#9b4dff] transition-all border-animated">
         <h3 className="text-2xl font-semibold mb-4 text-[#9b4dff]">Seguridad Digital</h3>
-        <p className="text-gray-300">Implementación de buenas prácticas y soluciones seguras, inspiradas en mi <span className="text-[#9b4dff] font-semibold"> experiencia en BBVA. </span></p>
+        <p className="text-gray-300">Implementación de prácticas y soluciones seguras, inspiradas en mi <span className="text-[#9b4dff] font-semibold"> experiencia en BBVA. </span></p>
       </motion.div>
 
       {/* Azul */}
@@ -396,13 +396,13 @@ export default function Home() {
       {/* Morado */}
       <motion.div variants={fadeInUp} className="bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-8 rounded-2xl shadow-lg text-center border border-[#9b4dff]/40 hover:border-[#9b4dff] hover:shadow-[0_0_25px_#9b4dff] transition-all border-animated">
         <h3 className="text-2xl font-semibold mb-4 text-[#9b4dff]">Diseño Responsivo</h3>
-        <p className="text-gray-300">Sitios adaptados a cualquier dispositivo, con un diseño limpio y profesional.</p>
+        <p className="text-gray-300">Sitios adaptados a cualquier dispositivo, con un diseño limpio, profesional y estratégico</p>
       </motion.div>
 
       {/* Azul */}
      <motion.div variants={fadeInUp} className="bg-gradient-to-b from-[#1a1a1a]/80 to-[#0f0f0f]/80 p-8 rounded-2xl shadow-lg text-center border border-[#00d9ff]/40 hover:border-[#00d9ff] hover:shadow-[0_0_25px_#00d9ff] transition-all border-animated">
         <h3 className="text-2xl font-semibold mb-4 text-[#00d9ff]">Visibilidad en Google</h3>
-        <p className="text-gray-300">Tus clientes podrán encontrarte fácilmente en Google y no perderas ventas.
+        <p className="text-gray-300">Tus clientes podrán encontrarte fácilmente y no perderas ventas.
  </p>
       </motion.div>
 
@@ -507,12 +507,11 @@ export default function Home() {
     Hablemos
   </h2>
   <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-    Tener una web ya no es un lujo, es la clave para conseguir clientes y destacar.
-    Cuéntame tu proyecto y te responderé con una propuesta adaptada a ti.
+    Tu web puede ser invisible o inolvidable, tú eliges. Cuéntame tu idea, y empecemos
   </p>
 
   {/* Formulario conectado a Formspree */}
-  <form action="https://formspree.io/f/xeolpyop" method="POST" className="grid gap-6">
+  <form action="https://formspree.io/f/mkgqzoyg" method="POST" className="grid gap-6">
     <input
       type="text"
       name="nombre"
@@ -549,35 +548,38 @@ export default function Home() {
 
 
 
-  {/* Botones de contacto directo */}
-  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-    <a
-      href="https://wa.me/34666603921" 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.52 3.48A11.78 11.78 0 0 0 12 0a11.78 11.78 0 0 0-8.52 3.48A11.78 11.78 0 0 0 0 12c0 2.09.54 4.1 1.57 5.9L0 24l6.25-1.64A11.94 11.94 0 0 0 12 24a11.78 11.78 0 0 0 8.52-3.48A11.78 11.78 0 0 0 24 12c0-3.18-1.24-6.17-3.48-8.52ZM12 21.5c-1.77 0-3.49-.46-5-1.33l-.36-.21-3.71.97.99-3.62-.23-.37A9.52 9.52 0 0 1 2.5 12C2.5 6.76 6.76 2.5 12 2.5c2.55 0 4.95.99 6.75 2.75A9.48 9.48 0 0 1 21.5 12c0 5.24-4.26 9.5-9.5 9.5Zm5.23-7.34c-.29-.15-1.7-.84-1.96-.94s-.45-.15-.64.15-.74.94-.91 1.13-.34.22-.63.07a7.77 7.77 0 0 1-2.29-1.42 8.64 8.64 0 0 1-1.61-2c-.17-.29 0-.45.13-.6.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.47-.64-.48h-.55c-.19 0-.51.07-.77.36s-1.02.99-1.02 2.42 1.05 2.81 1.19 3c.15.19 2.07 3.16 5.01 4.43.7.3 1.24.48 1.66.61.7.22 1.34.19 1.85.12.57-.08 1.7-.7 1.94-1.38.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34Z"/>
-      </svg>
-      WhatsApp
-    </a>
-
-    <a
-      href="mailto:rubenariasweb@gmail.com" 
-      className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold bg-red-500 hover:bg-red-600 text-white shadow-lg transition-all"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 13.065 1.5 6V18h21V6L12 13.065zM12 11 1.5 4.5h21L12 11z"/>
-      </svg>
-      Correo
-    </a>
-  </div>
-
-  <p className="mt-10 text-xl font-medium bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+<p className="mt-6 text-xl font-medium bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent text-center">
   🚀 El mejor momento para empezar fue ayer. El segundo mejor es{" "}
   <span className="font-bold underline decoration-cyan-400">hoy</span>.
 </p>
+
+{/* Botones de contacto directo */}
+<div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+  <a
+    href="https://wa.me/34666603921" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.78 11.78 0 0 0 12 0a11.78 11.78 0 0 0-8.52 3.48A11.78 11.78 0 0 0 0 12c0 2.09.54 4.1 1.57 5.9L0 24l6.25-1.64A11.94 11.94 0 0 0 12 24a11.78 11.78 0 0 0 8.52-3.48A11.78 11.78 0 0 0 24 12c0-3.18-1.24-6.17-3.48-8.52ZM12 21.5c-1.77 0-3.49-.46-5-1.33l-.36-.21-3.71.97.99-3.62-.23-.37A9.52 9.52 0 0 1 2.5 12C2.5 6.76 6.76 2.5 12 2.5c2.55 0 4.95.99 6.75 2.75A9.48 9.48 0 0 1 21.5 12c0 5.24-4.26 9.5-9.5 9.5Zm5.23-7.34c-.29-.15-1.7-.84-1.96-.94s-.45-.15-.64.15-.74.94-.91 1.13-.34.22-.63.07a7.77 7.77 0 0 1-2.29-1.42 8.64 8.64 0 0 1-1.61-2c-.17-.29 0-.45.13-.6.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.47-.64-.48h-.55c-.19 0-.51.07-.77.36s-1.02.99-1.02 2.42 1.05 2.81 1.19 3c.15.19 2.07 3.16 5.01 4.43.7.3 1.24.48 1.66.61.7.22 1.34.19 1.85.12.57-.08 1.7-.7 1.94-1.38.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34Z"/>
+    </svg>
+    WhatsApp
+  </a>
+
+  <a
+    href="mailto:exitosconweb@gmail.com" 
+    className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold bg-red-500 hover:bg-red-600 text-white shadow-lg transition-all"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 13.065 1.5 6V18h21V6L12 13.065zM12 11 1.5 4.5h21L12 11z"/>
+    </svg>
+    Correo
+  </a>
+</div>
+
+
+
 </motion.section>
 
 </div>
